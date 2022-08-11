@@ -14,18 +14,18 @@ public class PersonController {
     }
 
     @PostMapping ("/people")
-    public String addName(@RequestBody String NAME){
-        addName(NAME);
+    public String addName(@RequestBody String N){
+        NAME.add(N);
         return "post new name";
     }
-    @PutMapping  ("/people")
-    public String updateName(@RequestBody String NAME){
-        updateName(NAME);
+    @PutMapping  ("/people/{index}")
+    public String updateName(@PathVariable int index,@RequestBody String N){
+        NAME.set(index,N);
         return "updates name";
     }
     @DeleteMapping ("/people/{index}")
-    public String deleteName(@PathVariable String NAME){
-        addName(NAME);
+    public String deleteName(@PathVariable int index){
+        NAME.remove(index);
         return "deletes name";
     }
 
